@@ -1,4 +1,33 @@
 body {
-    font-family: 'Clash Display';
+    font-family: 'Work Sans';
     font-size: 16px;
+    background: #EEEEEE;
+}
+
+.if {
+    background-image: url('../assets/images/background.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.if-hero {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+
+    &__title {
+        font-family: 'Clash Display';
+        font-size: 64px;
+        padding: 10px 0;
+    }
+
+    &__topline {
+        font-size: 40px;
+        color: #802CF1;
+        padding-bottom: 60px;
+    }
 }

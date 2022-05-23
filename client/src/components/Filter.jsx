@@ -12,14 +12,10 @@ const Filter = ({ setShowUsers }) => {
     if (filteredUsers.length) {
       setShowUsers(filteredUsers)
     } else {
-      setShowUsers(users)
+      setShowUsers([])
     }
   }
-  return (
-    <div>
-      Search: <input value={search} onChange={onSearch} />
-    </div>
-  )
+  return <input className='if-form__field' placeholder='Rechercher' value={search} onChange={onSearch} />
 }
 
 export default Filter

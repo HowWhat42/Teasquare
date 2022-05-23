@@ -27,21 +27,34 @@ const UserDetails = () => {
     const sponsors = users.filter(({ sponsor }) => sponsor === user.uuid)
 
     return (
-        <div>
-            <h1>Client {user.id}</h1>
-            <p>{user.firstname}</p>
-            <p>{user.lastname}</p>
-            <p>Parrain {users.find((u) => u.uuid === user.sponsor)?.discordID}</p>
-            {sponsors.map((sponsor) => <div key={sponsor.id}>
-                <p>Filleul {sponsor.discordID}</p>
-                <button onClick={() => navigate(`/users/${sponsor.id}`)}>Détails</button>
-            </div>)}
-            <p>{user.discordID}</p>
-            <p>{user.telegramID}</p>
-            <SubscriptionForm />
-            <Subscriptions />
-
-            <button onClick={() => navigate('/users')}>Back</button>
+        <div className='if'>
+            <div className='if-hero'>
+                <h1 className='if-hero__title'>TeaSquare</h1>
+                <h2 className='if-hero__topline'>Détails Client</h2>
+            </div>
+            <div className='if-user'>
+                <div className='if-user__details'>
+                    <div className='if-user__details-info'>
+                        <h2>Informations</h2>
+                        <p>Prénom : {user.firstname}</p>
+                        <p>Nom : {user.lastname}</p>
+                        <p>Parrain : {users.find((u) => u.uuid === user.sponsor)?.discordID}</p>
+                        <p>Tag Discord : {user.discordID}</p>
+                        <p>ID Télégram : {user.telegramID}</p>
+                        <Subscriptions />
+                    </div>
+                    <SubscriptionForm />
+                </div>
+                <h3>Filleuls</h3>
+                <div className='if-user__affi'>
+                    {!sponsors.length && <p>Aucun filleul</p>}
+                    {sponsors.map((sponsor) => <div className='if-user__affi-box' key={sponsor.id}>
+                        <p>{sponsor.discordID}</p>
+                        <button className='if-button if-button__validate' onClick={() => navigate(`/users/${sponsor.id}`)}>Détails</button>
+                    </div>)}
+                </div>
+                <button className='if-button if-button__error' onClick={() => navigate('/users')}>Retour</button>
+            </div>
         </div>
     )
 }

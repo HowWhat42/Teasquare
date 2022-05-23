@@ -17,13 +17,13 @@ const SubscriptionForm = () => {
     const clear = () => setSubscriptioData({ userId: '', name: '', startDate: new Date(), duration: 30 })
 
     return (
-        <div>
-            <h2>Formulaire Abonnement</h2>
-            <Field title={"Nom de l'abonnement"} value={subscriptionData.name} setValue={(evt) => setSubscriptioData({ ...subscriptionData, name: evt.target.value })} type={'text'} />
-            <Field title={'Date de début'} value={subscriptionData.startDate} setValue={(evt) => setSubscriptioData({ ...subscriptionData, startDate: evt.target.value })} type={'date'} />
-            <Field title={'Durée'} value={subscriptionData.duration} setValue={(evt) => setSubscriptioData({ ...subscriptionData, duration: evt.target.value })} type={'number'} />
-            <div>
-                <button onClick={() => handleSubmit()}>add</button>
+        <div className='if-form'>
+            <div className='if-form__container'>
+                <h2>Formulaire Abonnement</h2>
+                <Field title={"Nom de l'abonnement"} value={subscriptionData.name} setValue={(evt) => setSubscriptioData({ ...subscriptionData, name: evt.target.value })} type={'text'} />
+                <Field title={'Date de début'} value={subscriptionData.startDate} setValue={(evt) => setSubscriptioData({ ...subscriptionData, startDate: evt.target.value })} type={'date'} />
+                <Field title={'Durée'} value={subscriptionData.duration} setValue={(evt) => setSubscriptioData({ ...subscriptionData, duration: evt.target.value })} type={'number'} />
+                <button className='if-button if-button__edit' onClick={() => handleSubmit()}>Ajouter</button>
             </div>
         </div>
     )

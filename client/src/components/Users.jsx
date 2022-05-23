@@ -4,15 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import { deleteUser } from '../actions/users'
 import Filter from './Filter'
 
-const Users = ({ setCurrentId }) => {
+const Users = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { users } = useSelector((state) => state.users)
+    const { users, isLoading } = useSelector((state) => state.users)
     const [showUsers, setShowUsers] = useState([])
 
     useEffect(() => {
         if (users) setShowUsers(users)
     }, [users])
+
+    if (isLoading) {
+        return <div>
+            <h1>Loading</h1>
+        </div>
+    }
 
     const handleDelete = (user) => {
         if (window.confirm(`Voulez vous supprimer ${user.firstname} ?`)) {
@@ -21,35 +27,25 @@ const Users = ({ setCurrentId }) => {
     }
 
     return (
-        <>
-            <h3>Users</h3>
-            <Filter setShowUsers={setShowUsers} />
-            <table>
-                <thead>
-                    <tr>
-                        <th>Prénom</th>
-                        <th>Nom</th>
-                        <th>Parrain</th>
-                        <th>Discord Tag</th>
-                        <th>Telegram ID</th>
-                        <th>Abonnement</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {showUsers.map((user) => (<tr key={user.id}>
-                        <td>{user.firstname}</td>
-                        <td>{user.lastname}</td>
-                        <td>{showUsers.find((u) => u.uuid === user.sponsor)?.discordID}</td>
-                        <td>{user.discordID}</td>
-                        <td>{user.telegramID}</td>
-                        {user.subscriptions.length > 0 ? <td>✅</td> : <td>❌</td>}
-                        <td><button onClick={() => handleDelete(user)}>Delete</button></td>
-                        <td><button onClick={() => navigate(`/users/${user.id}`)}>View</button></td>
-                        <td><button onClick={() => setCurrentId(user.id)}>Edit</button></td>
-                    </tr>))}
-                </tbody>
-            </table>
-        </>
+        <div className='if-users'>
+            <div className='if-users__search'>
+                <Filter setShowUsers={setShowUsers} />
+                <button className='if-button if-button__edit' onClick={() => navigate(`/form/`)}>Ajouter</button>
+            </div>
+
+
+            {showUsers.map((user) => (<div className='if-users__row' key={user.id}>
+                <p>{user.firstname}</p>
+                <p>{user.lastname}</p>
+                <p>{showUsers.find((u) => u.uuid === user.sponsor)?.discordID}</p>
+                <p>{user.discordID}</p>
+                <p>{user.telegramID}</p>
+                {user.subscriptions.length > 0 ? <p>✅</p> : <p>❌</p>}
+                <button className='if-button if-button__validate' onClick={() => navigate(`/users/${user.id}`)}>Détails</button>
+                <button className='if-button if-button__edit' onClick={() => navigate(`/form/${user.id}`)}>Modifier</button>
+                <button className='if-button if-button__error' onClick={() => handleDelete(user)}>Supprimer</button>
+            </div>))}
+        </div>
     )
 }
 

@@ -1,0 +1,23 @@
+.if-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 154px;
+    max-height: 48px;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+
+    &__validate {
+        background: #22C596;
+    }
+
+    &__error {
+        background: #FF4141;
+    }
+
+    &__edit {
+        background: #802CF1;
+    }
+}

@@ -1,4 +1,5 @@
 import Home from "./Home"
 import UserDetails from "./UserDetails"
+import UserForm from "./UserForm"
 
-export { Home, UserDetails }
+export { Home, UserForm, UserDetails }

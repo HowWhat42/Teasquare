@@ -1,0 +1,33 @@
+.if-users {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 32px;
+    margin: 0 48px;
+
+    &__search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 36px;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 16px 24px;
+        background: #FFFFFF;
+        font-size: 20px;
+        margin: 24px 0;
+        align-items: center;
+
+        button,
+        p {
+            margin: 0 12px;
+            display: flex;
+            flex: 1;
+        }
+    }
+}

@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { getUsers } from '../actions/users'
-import { UserForm, Users } from '../components'
+import { Users } from '../components'
 import { useDispatch } from 'react-redux'
 
 const Home = () => {
     const dispatch = useDispatch()
-    const [currentId, setCurrentId] = useState(null)
 
     useEffect(() => {
         dispatch(getUsers())
     }, [dispatch])
 
     return (
-        <div>
-            <h1>TeaSquare</h1>
-            <UserForm currentId={currentId} setCurrentId={setCurrentId} />
-            <Users setCurrentId={setCurrentId} />
+        <div className='if'>
+            <div className='if-hero'>
+                <h1 className='if-hero__title'>TeaSquare</h1>
+                <h2 className='if-hero__topline'>Liste parrainage</h2>
+            </div>
+            <Users />
         </div>
     )
 }

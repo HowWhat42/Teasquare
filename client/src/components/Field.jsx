@@ -2,9 +2,8 @@ import React from 'react'
 
 const Field = ({ title, value, setValue, type }) => {
     return (
-        <div>
-            <p>{title}</p>
-            <input value={value} onChange={setValue} type={type} />
+        <div className='if-form__field'>
+            <input placeholder={title} className='if-form__field-input' value={value} onChange={setValue} type={type} />
         </div>
     )
 }
