@@ -1,6 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "http://affi.teasquare.fr",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "axios": "^0.27.2",
@@ -19,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy:ui": "rm -rf /var/www/html/build && npm run build && cp -r build /var/www/html/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
