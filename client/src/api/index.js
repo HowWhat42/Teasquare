@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = `http://localhost:3001/api`
+const baseUrl = `/api`
 
 export const fetchUsers = () => axios.get(`${baseUrl}/users/`)
 export const fetchUser = (id) => axios.get(`${baseUrl}/users/${id}`)
